@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101828">
+  <title>RBAC Test Case Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="RBAC Test Generator home">
+        <span class="brand-icon" aria-hidden="true">盾</span>
+        <span>RBAC <span class="brand-light">Test Generator</span></span>
+      </a>
+      <span class="topbar-label"><span class="status-dot"></span> Local generator</span>
+    </header>
+
+    <main class="main-content">
+      <section class="page-heading">
+        <div class="eyebrow">ACCESS CONTROL VALIDATION</div>
+        <h1>Generate your test report</h1>
+        <p>Enter the roles and tab details to create your standardized access-control verification statement.</p>
+      </section>
+
+      <div class="workspace">
+        <section class="panel input-panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Test details</h2>
+              <p>Complete the three fields below.</p>
+            </div>
+            <span class="step-badge">INPUT</span>
+          </div>
+
+          <form id="generator-form">
+            <div class="field-group">
+              <label for="unauthorized-roles">Roles without access <span class="required">*</span></label>
+              <textarea id="unauthorized-roles" rows="5" placeholder="Enter one role per line&#10;Example:&#10;Role 1&#10;Role 2&#10;Role 3" required></textarea>
+              <div class="field-hint">Enter one role per line. You can add as many roles as needed.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="tab-name">Tab name <span class="required">*</span></label>
+              <input id="tab-name" type="text" placeholder="e.g. Attachment" required>
+            </div>
+
+            <div class="field-group">
+              <label for="authorized-role">Role with Read + Write permission <span class="required">*</span></label>
+              <input id="authorized-role" type="text" placeholder="e.g. Admin Role" required>
+            </div>
+
+            <button class="primary-button" type="submit">
+              <span aria-hidden="true">✦</span> Generate test case
+            </button>
+            <button class="text-button" type="button" id="reset-button">Clear all fields</button>
+          </form>
+        </section>
+
+        <section class="panel output-panel" aria-live="polite">
+          <div class="panel-heading output-heading">
+            <div>
+              <h2>Generated output</h2>
+              <p>Your report will appear here.</p>
+            </div>
+            <span class="step-badge output-badge">OUTPUT</span>
+          </div>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon" aria-hidden="true">✎</div>
+            <h3>Your test case is waiting</h3>
+            <p>Fill in the details and select <strong>Generate test case</strong> to preview the three-paragraph report.</p>
+          </div>
+
+          <div id="result-area" class="result-area" hidden>
+            <div class="result-meta">
+              <span class="result-indicator"><span class="status-dot"></span> Generated report</span>
+              <span id="role-count" class="role-count"></span>
+            </div>
+            <article id="generated-output" class="generated-output"></article>
+            <button id="copy-button" class="copy-button" type="button">
+              <span aria-hidden="true">▢</span> Copy report
+            </button>
+            <p id="copy-feedback" class="copy-feedback" role="status"></p>
+            <p class="copy-note">The report is copied with bold formatting where supported. Paste it into your local Word or Excel file.</p>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>RBAC Test Case Generator</span>
+        <span>Runs in your browser · No data is uploaded or stored</span>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
